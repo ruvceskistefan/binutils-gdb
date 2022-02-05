@@ -1901,7 +1901,9 @@ gdb$(EXEEXT): gdb.o $(LIBGDB_OBS) $(CDEPS) $(TDEPLIBS)
 		-o gdb$(EXEEXT) gdb.o $(LIBGDB_OBS) \
 		$(TDEPLIBS) $(TUI_LIBRARY) $(CLIBS) $(LOADLIBES)
 ifneq ($(CODESIGN_CERT),)
-	$(ECHO_SIGN) $(CODESIGN) -s $(CODESIGN_CERT) gdb$(EXEEXT)
+	$(ECHO_SIGN) $(CODESIGN) \
+	--entitlements $(srcdir)/contrib/gdb-entitlements.xml \
+	-s $(CODESIGN_CERT) gdb$(EXEEXT)
 endif
 
 # This is useful when debugging GDB, because some Unix's don't let you run GDB

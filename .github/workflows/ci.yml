@@ -22,9 +22,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: brew install gmp dejagnu
+      run:  brew install gmp dejagnu
     - name: Setup codesigning certificate
-      run: gdb/contrib/macos-setup-codesign.sh
+      run:  bash -x gdb/contrib/macos-setup-codesign.sh
     - name: Build
       run: |
           mkdir ../build && cd ../build

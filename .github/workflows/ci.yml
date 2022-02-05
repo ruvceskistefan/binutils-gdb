@@ -1,0 +1,37 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  macos:
+    name: ${{matrix.vector.jobname}} (${{matrix.vector.pool}})
+    strategy:
+      fail-fast: false
+      matrix:
+        vector:
+          - jobname: osx-gcc
+            cc: gcc-11
+            cxx: g++-11
+            pool: macos-latest
+    env:
+      CC: ${{matrix.vector.cc}}
+      CXX: ${{matrix.vector.cc}}
+      jobname: ${{matrix.vector.jobname}}
+      runs_on_pool: ${{matrix.vector.pool}}
+    runs-on: ${{matrix.vector.pool}}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: brew install gmp dejagnu
+    - name: Setup codesigning certificate
+      run: gdb/contrib/macos-setup-codesign.sh
+    - name: Build
+      run: |
+          mkdir ../build && cd ../build
+          ../binutils-gdb/configure CC=$CC CXX=$CXX --enable-codesign=gdb_codesign
+          make -j
+    - name: Test
+      run: |
+          cd ../build
+          make check-gdb -j
+  

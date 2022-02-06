@@ -24,7 +24,9 @@ jobs:
     - name: Install dependencies
       run:  brew install gmp dejagnu
     - name: Setup codesigning certificate
-      run:  bash -x gdb/contrib/macos-setup-codesign.sh
+      run:  |
+          sudo DevToolsSecurity -enable
+          bash -x gdb/contrib/macos-setup-codesign.sh
     - name: Build
       run: |
           mkdir ../build && cd ../build

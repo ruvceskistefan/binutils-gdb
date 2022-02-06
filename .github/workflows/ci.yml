@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run:  brew install gmp dejagnu
+      run:  brew install gmp gettext dejagnu
     - name: Setup codesigning certificate
       run:  |
           sudo DevToolsSecurity -enable

@@ -12,7 +12,11 @@ jobs:
           - jobname: osx-gcc
             cc: gcc-11
             cxx: g++-11
-            pool: macos-latest
+            pool: macos-10.15
+          - jobname: osx-clang
+            cc: clang
+            cxx: clang++
+            pool: macos-10.15
     env:
       CC: ${{matrix.vector.cc}}
       CXX: ${{matrix.vector.cc}}

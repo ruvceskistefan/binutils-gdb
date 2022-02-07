@@ -38,6 +38,7 @@ jobs:
           ../binutils-gdb/configure CC=$CC CXX=$CXX \
             CFLAGS=$CFLAGS CXXFLAGS=$CFLAGS \
             --enable-codesign=gdb_codesign
+            --disable-binutils
           make -j 3
     - name: Test
       run: |

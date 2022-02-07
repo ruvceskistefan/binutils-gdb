@@ -44,4 +44,7 @@ jobs:
       run: |
           cd ../build
           make check-gdb -j 3
+    - name: Setup tmate session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
   

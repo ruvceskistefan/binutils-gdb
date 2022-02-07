@@ -36,7 +36,7 @@ jobs:
       run: |
           mkdir ../build && cd ../build
           ../binutils-gdb/configure CC=$CC CXX=$CXX \
-            CFLAGS=$CFLAGS CXXFLAGS=$CFLAGS \
+            CFLAGS="$CFLAGS" CXXFLAGS="$CFLAGS" \
             --enable-codesign=gdb_codesign \
             --disable-binutils
           make -j 3

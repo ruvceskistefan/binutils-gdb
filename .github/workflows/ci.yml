@@ -40,11 +40,11 @@ jobs:
             --enable-codesign=gdb_codesign \
             --disable-binutils
           make -j 3
-    - name: Test
-      run: |
-          cd ../build
-          make check-gdb -j 3
- #   - name: Setup tmate session
- #     if: ${{ failure() }}
- #     uses: mxschmitt/action-tmate@v3
+ #   - name: Test
+ #     run: |
+ #         cd ../build
+ #         make check-gdb -j 3
+    - name: Setup tmate session
+  #    if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
   

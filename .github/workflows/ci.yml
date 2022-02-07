@@ -22,7 +22,7 @@ jobs:
       CXX: ${{matrix.vector.cc}}
       jobname: ${{matrix.vector.jobname}}
       runs_on_pool: ${{matrix.vector.pool}}
-      CFLAGS: -I/usr/local/include
+      CFLAGS: "-I/usr/local/include -v -Wl,-v"
     runs-on: ${{matrix.vector.pool}}
     steps:
     - uses: actions/checkout@v2

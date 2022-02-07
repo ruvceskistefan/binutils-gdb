@@ -45,6 +45,7 @@ openssl req -new -newkey rsa:2048 -x509 -days 3650 -nodes -config "$TMPDIR/$CERT
 [ $? -eq 0 ] || error Something went wrong when generating the certificate
 
 # Install the certificate in the system keychain
+# sudo security authorizationdb write com.apple.trust-settings.admin allow # required on macOS 11
 sudo security add-trusted-cert -d -r trustRoot -p codeSign -k /Library/Keychains/System.keychain "$TMPDIR/$CERT.cer" #> /dev/null 2>&1
 [ $? -eq 0 ] || error Something went wrong when installing the certificate
 

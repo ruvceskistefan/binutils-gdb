@@ -22,6 +22,7 @@ jobs:
       CXX: ${{matrix.vector.cc}}
       jobname: ${{matrix.vector.jobname}}
       runs_on_pool: ${{matrix.vector.pool}}
+      CFLAGS: -I/usr/local/include
     runs-on: ${{matrix.vector.pool}}
     steps:
     - uses: actions/checkout@v2
@@ -35,11 +36,11 @@ jobs:
       run: |
           mkdir ../build && cd ../build
           ../binutils-gdb/configure CC=$CC CXX=$CXX \
-            CFLAGS=-I/usr/local/include CXXFLAGS=-I/usr/local/include \
+            CFLAGS=$CFLAGS CXXFLAGS=$CFLAGS \
             --enable-codesign=gdb_codesign
-          make -j
+          make -j 3
     - name: Test
       run: |
           cd ../build
-          make check-gdb -j
+          make check-gdb -j 3
   

@@ -22,7 +22,7 @@ jobs:
       CXX: ${{matrix.vector.cxx}}
       jobname: ${{matrix.vector.jobname}}
       runs_on_pool: ${{matrix.vector.pool}}
-      CFLAGS: "-I/usr/local/include"
+      CFLAGS: "-I/usr/local/include -g3 -O0"
     runs-on: ${{matrix.vector.pool}}
     steps:
     - uses: actions/checkout@v2
@@ -44,9 +44,7 @@ jobs:
 #      run: |
 #          echo 'set startup-with-shell off' > $HOME/.gdbinit
 #          cd ../build
-#          make check-gdb RUNTESTFLAGS="INTERNAL_GDBFLAGS=-nw" \
-#            CC_FOR_TARGET=$CC \
-#            CXX_FOR_TARGET=$CXX
+#          make check-gdb RUNTESTFLAGS="INTERNAL_GDBFLAGS=-nw CC_FOR_TARGET=$CC CXX_FOR_TARGET=$CXX"
     - name: Setup tmate session
   #    if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3

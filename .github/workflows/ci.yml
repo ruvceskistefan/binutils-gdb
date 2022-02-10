@@ -56,7 +56,7 @@ jobs:
 #          echo 'set startup-with-shell off' > $HOME/.gdbinit
 #          cd ../build
 #          make check-gdb RUNTESTFLAGS="INTERNAL_GDBFLAGS=-nw CC_FOR_TARGET=$CC CXX_FOR_TARGET=$CXX"
-#    - name: Setup tmate session
-#  #    if: ${{ failure() }}
-#      uses: mxschmitt/action-tmate@v3
+    - name: Setup tmate session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
   

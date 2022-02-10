@@ -38,7 +38,7 @@ jobs:
           ../binutils-gdb/configure CC=$CC CXX=$CXX \
             CFLAGS="$CFLAGS" CXXFLAGS="$CFLAGS" \
             --enable-codesign=gdb_codesign \
-            --disable-binutils
+            --disable-binutils \
             --prefix=$HOME/GDB/
           make -j 3
           make install

@@ -23,6 +23,7 @@ jobs:
       jobname: ${{matrix.vector.jobname}}
       runs_on_pool: ${{matrix.vector.pool}}
       CFLAGS: "-I/usr/local/include -g3 -O0"
+      MACOSX_DEPLOYMENT_TARGET: 10.11
     runs-on: ${{matrix.vector.pool}}
     steps:
     - uses: actions/checkout@v2

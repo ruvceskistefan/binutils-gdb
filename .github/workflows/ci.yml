@@ -42,6 +42,7 @@ jobs:
             --disable-binutils                  \
             --disable-dependency-tracking       \
             --with-gmp=$(brew --prefix gmp)     \
+            --with-libgmp-prefix=$(brew --prefix gmp) \
             --prefix=$HOME/GDB/
           make -j 3
           make install-gdb

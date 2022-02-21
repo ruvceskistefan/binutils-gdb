@@ -134,7 +134,6 @@ if ![info exists INTERNAL_GDBFLAGS] {
     set INTERNAL_GDBFLAGS \
 	[join [list \
 		   "-nw" \
-		   "-nx" \
 		   "-data-directory $BUILD_DATA_DIRECTORY" \
 		   {-iex "set height 0"} \
 		   {-iex "set width 0"}]]
